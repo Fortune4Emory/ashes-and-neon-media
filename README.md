@@ -1,5 +1,5 @@
 
-# Ashes & Neon Media — Static Site (Starter)
+# Ashes & Neon Media — v2 Test Commit 
 
 This is a hand-built, no-templates starter for your studio/publisher site.
 Host it **free** on Cloudflare Pages, GitHub Pages, Vercel, or Netlify. The only annual cost is your **domain**.
