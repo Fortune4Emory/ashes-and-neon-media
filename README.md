@@ -37,5 +37,5 @@ Just open `index.html` in a browser. No build step required.
 ## 🪪 License
 All starter code is yours. No attribution required.
 =======
-# ashes-and-neon-media
-Yo Frankie I did it
+# ashes-and-neon-media Yo Frankie I did it
+
