@@ -1,3 +1,4 @@
+
 # Ashes & Neon Media — Static Site (Starter)
 
 This is a hand-built, no-templates starter for your studio/publisher site.
@@ -35,3 +36,6 @@ Just open `index.html` in a browser. No build step required.
 
 ## 🪪 License
 All starter code is yours. No attribution required.
+=======
+# ashes-and-neon-media
+
