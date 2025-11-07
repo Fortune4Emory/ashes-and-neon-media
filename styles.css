@@ -32,3 +32,192 @@ body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',
 .feature > div{max-width:900px;margin:0 auto}
 .site-footer{padding:24px;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
 @media (max-width:720px){.nav{display:none}}
+/* Smoldering ember hover effect */
+#tagline {
+  color: #e8e6e3;
+  transition: all 1.5s ease;
+  text-shadow: 0 0 3px rgba(255, 200, 150, 0.2);
+  position: relative;
+}
+
+/* On hover, simulate heat build-up and soft glow */
+#tagline:hover {
+  color: #fff3e0;
+  text-shadow:
+    0 0 10px rgba(255, 180, 80, 0.5),
+    0 0 20px rgba(255, 120, 40, 0.4),
+    0 0 35px rgba(255, 60, 0, 0.3);
+  transition: all 1.8s ease;
+  animation: smolderPulse 2.5s ease-in-out infinite alternate;
+}
+
+/* Gentle pulse like cooling embers */
+@keyframes smolderPulse {
+  0% {
+    text-shadow:
+      0 0 6px rgba(255, 200, 130, 0.4),
+      0 0 16px rgba(255, 120, 50, 0.3),
+      0 0 28px rgba(255, 60, 0, 0.2);
+    filter: brightness(1);
+  }
+  100% {
+    text-shadow:
+      0 0 12px rgba(255, 210, 160, 0.6),
+      0 0 24px rgba(255, 130, 40, 0.5),
+      0 0 48px rgba(255, 60, 0, 0.35);
+    filter: brightness(1.1);
+  }
+}
+/* --- Ember + Smoke effect for the tagline --- */
+.hero-text { position: relative; }
+
+/* Base glow */
+.ember{
+  position: relative;
+  display: inline-block;
+  --ember1: rgba(255,180,80,.35);
+  --ember2: rgba(255,120,40,.25);
+  --ember3: rgba(255,80,20,.15);
+  text-shadow:
+    0 0 10px var(--ember1),
+    0 0 20px var(--ember1),
+    0 0 35px var(--ember2),
+    0 0 55px var(--ember3);
+  animation: emberPulse 3.2s ease-in-out infinite;
+}
+
+/* On hover: stronger heat + start smoke */
+.ember:hover{
+  animation: smolder 1.4s ease-in-out infinite alternate;
+}
+
+/* Two little smoke puffs */
+.ember::before,
+.ember::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(3px);
+  background:
+    radial-gradient(circle at 30% 30%,
+      rgba(255,255,255,.55) 0 20%,
+      rgba(200,200,200,.35) 30%,
+      rgba(120,120,120,0) 70%);
+  transform: translate(-50%,0) scale(1);
+}
+
+.ember:hover::before{ animation: smokeRise 2.8s ease-out infinite; }
+.ember:hover::after { animation: smokeRise 3.6s ease-out infinite .8s; }
+
+/* Soft breathing glow */
+@keyframes emberPulse{
+  0%,100%{
+    text-shadow:
+      0 0 6px rgba(255,170,70,.28),
+      0 0 16px rgba(255,140,50,.22),
+      0 0 34px rgba(255,90,20,.12);
+  }
+  50%{
+    text-shadow:
+      0 0 10px rgba(255,190,90,.38),
+      0 0 24px rgba(255,150,60,.28),
+      0 0 50px rgba(255,100,25,.18);
+  }
+}
+
+/* Hotter, smokier hover state */
+@keyframes smolder{
+  0%{
+    text-shadow:
+      0 0 10px rgba(255,200,120,.45),
+      0 0 28px rgba(255,150,70,.35),
+      0 0 60px rgba(255,110,40,.25);
+    filter: none;
+  }
+  100%{
+    text-shadow:
+      0 0 14px rgba(255,210,140,.55),
+      0 0 36px rgba(255,160,80,.42),
+      0 0 80px rgba(255,120,50,.32);
+    filter: saturate(1.05) contrast(1.05);
+  }
+}
+
+/* Smoke drift upward and fade */
+@keyframes smokeRise{
+  0%{
+    opacity: 0;
+    transform: translate(-50%, 4px) scale(.6);
+  }
+  12%{ opacity: .35; }
+  60%{
+    opacity: .18;
+    transform: translate(-50%, -48px) scale(1.2);
+    filter: blur(5px);
+  }
+  100%{
+    opacity: 0;
+    transform: translate(-50%, -84px) scale(1.45);
+    filter: blur(7px);
+  }
+}
+/* Subtle drifting smoke effect */
+/* Tagline with ember and smoke effect */
+#tagline {
+  position: relative;
+  display: block;
+  text-align: center;
+  color: #fff;
+  animation: smolderPulse 2.5s ease-in-out infinite alternate;
+  text-shadow: 0 0 8px rgba(255, 150, 50, 0.6),
+               0 0 16px rgba(255, 80, 0, 0.3);
+  margin-bottom: 1rem; /* restores breathing room for the button */
+}
+
+#tagline::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(rgba(255,255,255,0.2), transparent 70%);
+  transform: translateX(-50%) scaleY(1);
+  opacity: 1.9;
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1; /* keeps the smoke behind the text */
+  animation: smokeDrift 12s ease-in-out infinite;
+}
+
+@keyframes smokeDrift {
+  0% {
+    transform: translateX(-50%) translateY(0) scaleY(1);
+    opacity: 0.9;
+    filter: blur(8px);
+  }
+  50% {
+    transform: translateX(-52%) translateY(-20px) scaleY(1.2);
+    opacity: 0.7;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateX(-48%) translateY(-40px) scaleY(1.4);
+    opacity: 0.3;
+    filter: blur(14px);
+  }
+}
+section#projects .card img.book-cover {
+  display: block;
+  margin: 1rem auto;
+  width: 220px !important;
+  max-width: none;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
